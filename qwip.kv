@@ -1,0 +1,70 @@
+<qwipRoot>:
+	orientation: "vertical"
+	
+	ScreenManager:
+		id: kivy_screen_manager
+		StartScreen:
+			name: "start_screen"
+		TourScreen:
+			id: tour_screen
+			name: "tour_screen"
+			
+<StartScreen@Screen>:
+
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "bg_blue_gr.png"
+	
+	FloatLayout:
+		#Settings
+		orientation: "vertical"
+		padding: root.width * .02, root.height * .02
+		spacing: min(root.width, root.height) * .02
+		
+		Label:
+			text: "[b][font=Raleway-Light_0]qwip[/font][/b]"
+			markup: True
+			font_size: min(root.height, root.width) / 5
+			pos_hint: {"x": .02, "y": .15}
+			color: 1,1,1,0.7	
+		Label:
+			text: "[b][font=Raleway-Light_0]Your smart shopping assistant.[/font][/b]"
+			markup: True
+			font_size: min(root.height, root.width) / 25
+			pos_hint: {"x": .02, "y": .045}
+			color: 1,1,1,0.7	
+			
+		Button:
+			text: "Start the tour"	
+			size_hint: .8, .07
+			pos_hint: {"x": .1, "y": .15}
+			background_color: 0.56, 0.89, 1, 0.8
+			on_release: app.root.changeScreen(self.text.lower())
+
+<TourScreen@Screen>:
+
+	Carousel:
+		
+		Image:
+			pos: self.pos
+			size: self.size
+			source: "c_img1.png"
+				
+			Button:
+				text: "test"	
+				pos: self.pos
+				size: self.size
+
+				
+		Image:
+			pos: self.pos
+			size: self.size
+			source: "c_img2.png"
+				
+		Image:
+			pos: self.pos
+			size: self.size
+			source: "c_img3.png"
+			
